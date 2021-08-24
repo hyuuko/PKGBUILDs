@@ -1,0 +1,21 @@
+pkgbase = v2ray-rules-dat
+	pkgdesc = Enhanced edition of V2Ray rules dat files, compatible with Trojan-Go.
+	pkgver = 202108232210
+	pkgrel = 1
+	url = https://github.com/Loyalsoldier/v2ray-rules-dat
+	install = v2ray-rules-dat.install
+	arch = any
+	license = GPL3
+	makedepends = curl
+	provides = v2ray-domain-list-community
+	provides = v2ray-geoip
+	conflicts = v2ray-domain-list-community
+	conflicts = v2ray-geoip
+	source = v2ray-rules-dat-updater.service
+	source = v2ray-rules-dat-updater.timer
+	source = v2ray-rules-dat-updater
+	sha256sums = d07133d1bdf3cb969b680e925c4529998e369f7a4103cd9467dab335b0f99dcd
+	sha256sums = 5bd55042d53d3794f27483277056f06f5e55d0e7702b0093ec6f17d7da6d548c
+	sha256sums = 1db538e0dec0f435335b315f57a0453c9b6c6591c2e395c601148426ed82515c
+
+pkgname = v2ray-rules-dat

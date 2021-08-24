@@ -1,0 +1,11 @@
+[Unit]
+Description = Service for update v2ray-rules-dat files
+After = network.target
+
+[Service]
+Type = oneshot
+User = root
+Group = root
+
+WorkingDirectory = /usr/share/v2ray
+ExecStart = /usr/bin/v2ray-rules-dat-updater jsdelivr

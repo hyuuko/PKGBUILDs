@@ -1,0 +1,13 @@
+#!/bin/bash
+
+bold=$(
+  tput setaf 2
+  tput bold
+)
+normal=$(tput sgr0)
+
+post_install() {
+  echo "To update v2ray-rules-dat automatically everyday, please run ${bold}sudo systemctl enable --now v2ray-rules-dat-updater.timer${normal}"
+  echo "To update v2ray-rules-dat now, please run ${bold}sudo systemctl start v2ray-rules-dat-updater.service${normal}, and see output with ${bold}systemctl status v2ray-rules-dat-updater.service${normal}"
+  echo "To uninstall v2ray-rules-dat, please run ${bold}sudo pacman -S v2ray-domain-list-community v2ray-geoip${normal}"
+}

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+pkgname=v2ray-rules-dat
+pkgver=202108232210
+pkgrel=1
+pkgdesc="Enhanced edition of V2Ray rules dat files, compatible with Trojan-Go."
+arch=('any')
+url="https://github.com/Loyalsoldier/v2ray-rules-dat"
+license=('GPL3')
+provides=(v2ray-domain-list-community v2ray-geoip)
+conflicts=(v2ray-domain-list-community v2ray-geoip)
+makedepends=(curl)
+install=${pkgname}.install
+source=(
+  v2ray-rules-dat-updater.service
+  v2ray-rules-dat-updater.timer
+  v2ray-rules-dat-updater
+)
+sha256sums=(
+  'd07133d1bdf3cb969b680e925c4529998e369f7a4103cd9467dab335b0f99dcd'
+  '5bd55042d53d3794f27483277056f06f5e55d0e7702b0093ec6f17d7da6d548c'
+  '1db538e0dec0f435335b315f57a0453c9b6c6591c2e395c601148426ed82515c'
+)
+
+build() {
+  cd "${srcdir}"
+  chmod +x ./v2ray-rules-dat-updater
+  ./v2ray-rules-dat-updater jsdelivr
+}
+
+package() {
+  cd "${srcdir}"
+
+  install -Dm644 "./geoip.dat" "${pkgdir}/usr/share/v2ray/geoip.dat"
+  install -Dm644 "./geosite.dat" "${pkgdir}/usr/share/v2ray/geosite.dat"
+
+  install -Dm755 "./${pkgname}-updater" "${pkgdir}/usr/bin/${pkgname}-updater"
+  install -Dm644 "./${pkgname}-updater.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}-updater.service"
+  install -Dm644 "./${pkgname}-updater.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname}-updater.timer"
+}
