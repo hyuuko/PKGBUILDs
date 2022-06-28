@@ -1,5 +1,3 @@
-#!/bin/bash
-
 pkgname=v2ray-rules-dat
 pkgver=202108232210
 pkgrel=1

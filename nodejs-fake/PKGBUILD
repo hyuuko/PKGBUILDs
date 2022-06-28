@@ -1,0 +1,7 @@
+pkgname=nodejs-fake
+pkgdesc="Nodejs pseudo package to be used when using fnm or nvm"
+pkgver=100
+pkgrel=1
+arch=(any)
+provides=(nodejs)
+conflicts=(nodejs)
